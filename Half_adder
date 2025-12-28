@@ -1,16 +1,44 @@
-# Half Adder – Gate Level Modeling
+Half Adder
 
-This module implements a Half Adder using basic logic gate primitives.
-Gate-level modeling represents the lowest abstraction close to hardware.
+A Half Adder is a combinational digital circuit that adds two single-bit binary numbers.
 
-```verilog
-module half_adder (
-    input a,
-    input b,
-    output sum,
-    output carry
+It has:
+
+Inputs: A, B
+
+Outputs:
+
+Sum (S): XOR of the inputs
+
+Carry (C): AND of the inputs
+
+Truth Table
+A	B	Sum (S)	Carry (C)
+0	0	0	0
+0	1	1	0
+1	0	1	0
+1	1	0	1
+Boolean Expressions
+
+Sum = A ⊕ B
+
+Carry = A · B
+
+
+Verilog Code
+
+`timescale 1ns / 1ps
+
+// Half Adder Module
+module half_adder(
+    input  a,     // First input
+    input  b,     // Second input
+    output sum,   // Sum output
+    output carry  // Carry output
 );
-    xor (sum, a, b);
-    and (carry, a, b);
-endmodule
 
+    // Logic
+    assign sum   = a ^ b;  // XOR for Sum
+    assign carry = a & b;  // AND for Carry
+
+endmodule
