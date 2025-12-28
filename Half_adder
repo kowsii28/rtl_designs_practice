@@ -3,20 +3,14 @@
 This module implements a Half Adder using basic logic gate primitives.
 Gate-level modeling represents the lowest abstraction close to hardware.
 
-## Verilog Code
-
 ```verilog
-`timescale 1ns / 1ps
-
-module half_adder_gate (
+module half_adder (
     input a,
     input b,
     output sum,
     output carry
 );
-
     xor (sum, a, b);
     and (carry, a, b);
-
 endmodule
 
