@@ -63,36 +63,4 @@ endmodule
 
 ---
 
-**## Verilog Code for gate level modelling**
 
-```verilog
-`timescale 1ns / 1ps
-
-// Half Adder Module
-module half_add(
- sum, carry, a, b
-    );
-    input a, b;
-    output sum, carry;
-    xor(sum,a,b);
-   and(carry,a,b);
-endmodule
-
----
-
-**## Verilog Code for behavioral modelling**
-
-`timescale 1ns / 1ps
-
-module half_add(
-a, b, sum, carry
-    );
-    input a, b;
-    output reg sum;
-    output reg carry;
-    always@(*)
-    begin
-     sum = a^b;
-     carry = a & b;
-     end
-endmodule
