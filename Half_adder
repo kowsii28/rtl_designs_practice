@@ -1,6 +1,22 @@
-half_adder/README.md
+# Half Adder – Gate Level Modeling
 
-# Half Adder RTL Designs
-This folder contains gate-level, behavioral, and structural models of Half Adder.
+This module implements a Half Adder using basic logic gate primitives.
+Gate-level modeling represents the lowest abstraction close to hardware.
 
+## Verilog Code
+
+```verilog
+`timescale 1ns / 1ps
+
+module half_adder_gate (
+    input a,
+    input b,
+    output sum,
+    output carry
+);
+
+    xor (sum, a, b);
+    and (carry, a, b);
+
+endmodule
 
