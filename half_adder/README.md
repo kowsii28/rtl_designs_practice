@@ -140,5 +140,12 @@ a, b, sum, carry
 endmodule
 ```
 
+| Feature     | `assign` (Dataflow)               | `always` (Behavioral)                                          |
+| ----------- | --------------------------------- | -------------------------------------------------------------- |
+| Syntax      | `assign out = expr;`              | `always @(*) begin ... end`                                    |
+| Output type | `wire`                            | `reg`                                                          |
+| Timing      | Continuous, updates automatically | Procedural, updates on events                                  |
+| Complexity  | Simple combinational logic only   | Can handle combinational & sequential logic, conditions, loops |
+| Use case    | Straightforward gates             | Complex combinational/sequential logic                         |
 
 
