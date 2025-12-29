@@ -64,3 +64,48 @@ The `timescale` directive in Verilog defines **how the simulator interprets time
 
 > Key Point: Any signal you drive in a procedural block must be `reg`. Any signal driven by a module or continuous assignment is `wire`.
 
+
+# Module Instantiation in Verilog (Testbench)
+
+## What is Module Instantiation?
+
+**Module instantiation** means **creating and using a module inside another module**.
+
+- A Verilog `module` is only a **definition**.
+- To actually **use** that module in simulation or hardware, we must **instantiate** it.
+- Instantiation creates a **real instance** of the circuit.
+
+👉 Without instantiation, the module will **never run or be tested**.
+
+---
+
+## Why Do We Need Instantiation in a Testbench?
+
+In a testbench:
+- We want to **test our design module** 
+- The testbench provides **inputs** and observes **outputs**.
+- To do this, the testbench must **connect to the design module**.
+
+This connection is done using **instantiation**.
+
+---
+
+## General Format of Module Instantiation in Verilog
+
+The general syntax for instantiating a module in Verilog is:
+
+```verilog
+module_name instance_name (
+    .port_name(signal_name),
+    .port_name(signal_name),
+    ...
+);
+```
+
+
+- port_name 	Port name defined inside the module
+- signal_name	Signal from the testbench to connect witht the design module
+
+  
+
+
