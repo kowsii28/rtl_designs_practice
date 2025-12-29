@@ -60,11 +60,12 @@ module half_adder_structural(
     input  b,
     output sum,
     output carry
-
+);
     assign sum   = a ^ b;  
     assign carry = a & b;  
 
 endmodule
+
 
 ```
 ## **Verilog Code for Gate-Level Modelling**
@@ -138,5 +139,6 @@ a, b, sum, carry
 
 endmodule
 ```
+
 
 
