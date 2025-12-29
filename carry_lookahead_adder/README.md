@@ -84,16 +84,19 @@ Ci+1 = Gi | (Pi & Gi-1) | (Pi & Pi-1 & Gi-2) | ... | (Pi & Pi-1 & ... & P0 & C0)
 
 ```
 
+
 # How Carry is Calculated Step by Step in a 4-bit CLA
 
 In a **4-bit Carry Look-Ahead Adder (CLA)**, the carry for each bit is calculated using **Generate (G) and Propagate (P) signals**. This allows all carries to be determined in parallel, unlike a Ripple Carry Adder.
 
 ---
 
+
 ### 1️⃣ C0 = Cin
 - The first carry is just the **input carry**.
 
 ---
+
 
 ### 2️⃣ C1 = G0 | (P0 & C0)
 - Carry at bit 1 happens if:
@@ -110,6 +113,7 @@ In a **4-bit Carry Look-Ahead Adder (CLA)**, the carry for each bit is calculate
 
 ---
 
+
 ### 4️⃣ C3 = G2 | (P2 & G1) | (P2 & P1 & G0) | (P2 & P1 & P0 & C0)
 - Carry at bit 3 happens if:
   - **Bit 2 generates a carry** (`G2`), OR  
@@ -118,6 +122,7 @@ In a **4-bit Carry Look-Ahead Adder (CLA)**, the carry for each bit is calculate
   - **All previous bits propagate the input carry** (`P2 & P1 & P0 & C0`)
 
 ---
+
 
 ### 5️⃣ C4 = G3 | (P3 & G2) | (P3 & P2 & G1) | (P3 & P2 & P1 & G0) | (P3 & P2 & P1 & P0 & C0)
 - Final carry out happens if:
