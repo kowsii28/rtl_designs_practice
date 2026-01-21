@@ -719,31 +719,7 @@ OR gate automatically selects the highest priority 1.
 
 ---
 
-**Q16: How many gates are needed to build a 2-bit comparator from scratch?**
 
-**A:** **Approximate gate count:**
-
-**For A > B:**
-- 2 XNOR (equality checks)
-- 1 AND (for each XNOR output)
-- 2 AND (for greater-than checks)
-- 1 OR (combine terms)
-**Subtotal:** ~6-8 gates
-
-**For A = B:**
-- 2 XNOR
-- 1 AND
-**Subtotal:** ~3 gates
-
-**For A < B:**
-- Similar to A > B
-**Subtotal:** ~6-8 gates
-
-**Total:** Approximately **20-25 gates** (including XNOR expansion)
-
-**Note:** XNOR can be built from:  2 NOT + 2 AND + 1 OR = 5 gates
-
----
 
 **Q17: What is the difference between a comparator and a subtractor?**
 
@@ -758,32 +734,6 @@ OR gate automatically selects the highest priority 1.
 | **Usage** | Conditional logic | Arithmetic operations |
 
 **Interesting fact:** You can build a comparator using a subtractor (check sign of A-B), but it's slower and more complex than dedicated comparator logic.
-
----
-
-**Q18: How does propagation delay scale with bit count in cascaded comparators?**
-
-**A:** 
-
-**For n-bit comparison using k 4-bit ICs:**
-
-```
-Number of ICs (k) = ⌈n/4⌉
-Total delay = k × (IC delay)
-
-Examples:
-4-bit:   1 IC  × 23ns = 23ns
-8-bit:   2 ICs × 23ns = 46ns
-16-bit: 4 ICs × 23ns = 92ns
-32-bit: 8 ICs × 23ns = 184ns
-```
-
-**Scaling:** **Linear** with number of ICs
-
-**Limitation:** For very large numbers (64-bit, 128-bit), delay becomes significant.  Modern CPUs use more advanced techniques like: 
-- Parallel prefix comparison
-- Look-ahead logic
-- Pipelined comparison
 
 ---
 
