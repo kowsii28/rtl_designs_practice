@@ -180,6 +180,9 @@ A = B = (A₁B₁ + A₁'B₁')·(A₀B₀ + A₀'B₀')
 A < B = A₁'B₁ + (A₁ ⊙ B₁)·A₀'B₀
 ```
 
+### Logic Circuit Diagram
+
+![2-bit Comparator Logic Diagram](2-bit.png)
 
 ### Truth Table 
 
@@ -269,7 +272,9 @@ A < B = A₃'B₃
       + (A₃ ⊙ B₃)·(A₂ ⊙ B₂)·A₁'B₁ 
       + (A₃ ⊙ B₃)·(A₂ ⊙ B₂)·(A₁ ⊙ B₁)·A₀'B₀
 ```
+### Logic Circuit Diagram
 
+![4-bit Comparator Logic Diagram](4-bit.png)
 
 ## 7. Internal Logic Workflow - How Comparators Actually Work
 
