@@ -10,17 +10,15 @@
 6. [4-Bit Comparator](#6-4-bit-comparator)
 7. [Internal Logic Workflow - How Comparators Actually Work](#7-internal-logic-workflow---how-comparators-actually-work)
 8. [Cascading Comparators](#8-cascading-comparators)
-9. [IC 7485 (4-Bit Magnitude Comparator)](#9-ic-7485-4-bit-magnitude-comparator)
-10. [Applications of Comparators](#10-applications-of-comparators)
-11. [Design Examples](#11-design-examples)
-12. [Truth Tables & K-Maps](#12-truth-tables--k-maps)
-13. [Key Learnings - Q&A Format](#13-key-learnings---qa-format)
+9. [Applications of Comparators](#10-applications-of-comparators)
+10. [Key Learnings - Q&A Format](#13-key-learnings---qa-format)
 
 ---
 
 ## 1. Introduction to Comparator
 
-A **Comparator** is a **combinational circuit** that compares two binary numbers and determines their relationship. 
+- A **Comparator** is a **combinational circuit** that compares two binary numbers and determines their relationship. 
+- “A magnitude comparator internally behaves like a priority encoder, where the most significant unequal bit determines the output.”
 
 ### Why do we need Comparators?
 
@@ -75,6 +73,14 @@ A comparator typically has **3 outputs**:
 3. **4-Bit Comparator** - Compares two 4-bit numbers
 4. **8-Bit Comparator** - Compares two 8-bit numbers (may use two 4-bit comparators by cascading)
 5. **N-Bit Comparator** - Compares two N-bit numbers
+
+
+| Comparator Type | Input Bits | Number of Combinations |
+|-----------------|------------|------------------------|
+| 1-Bit           | 2          | 2² = 4                 |
+| 2-Bit           | 4          | 2⁴ = 16                |
+| 4-Bit           | 8          | 2⁸ = 256               |
+| n-Bit           | 2n         | 2^(2n)                 |
 
 ---
 
@@ -180,7 +186,7 @@ A = B = (A₁B₁ + A₁'B₁')·(A₀B₀ + A₀'B₀')
 A < B = A₁'B₁ + (A₁ ⊙ B₁)·A₀'B₀
 ```
 
-### Logic Circuit Diagram
+### Logic Diagram - Derived from Boolean Expression
 
 ![2-bit Comparator Logic Diagram](2-bit.png)
 
@@ -202,7 +208,7 @@ From the above truth table, K-map for each output can be drawn as follows.
 
 <img width="362" height="300" alt="image" src="https://github.com/user-attachments/assets/52a29217-329f-4462-80b6-37f43361b7ba" />
 
-### Logic Diagram
+### Logic Diagram - Derived from K-map reduction
 
 Inputs:  A₁, A₀, B₁, B₀
 Outputs: A>B, A=B, A<B
@@ -401,7 +407,7 @@ B₇₋₄  │              │  Stage   │              │  B₃₋₀
 ---
 
 
-## 10. Applications of Comparators
+## 9. Applications of Comparators
 
 ### 1. **Arithmetic Logic Unit (ALU)**
 
@@ -441,13 +447,13 @@ B₇₋₄  │              │  Stage   │              │  B₃₋₀
 
 ---
 
-## 13. Key Learnings - Q&A Format
+## 10. Key Learnings - Q&A Format
 
 ### 🎯 Fundamental Concepts
 
 **Q1:  What is a comparator in digital electronics?**
 
-**A:** A comparator is a combinational circuit that compares two binary numbers and produces three outputs indicating whether one number is greater than, equal to, or less than the other.  It's a fundamental building block in digital systems.
+**A:** A comparator is a combinational circuit that compares n-bit binary numbers and produces three outputs indicating whether one number is greater than, equal to, or less than the other.  It's a fundamental building block in digital systems.
 
 ---
 
@@ -489,20 +495,7 @@ This works because MSBs have higher priority than LSBs.
 
 ---
 
-**Q5: Write the Boolean expression for A > B in a 2-bit comparator.**
-
-**A:** 
-```
-A > B = A₁B₁' + (A₁ ⊙ B₁)·A₀B₀'
-```
-
-**Explanation:**
-- `A₁B₁'`: MSB of A is 1 and MSB of B is 0
-- `(A₁ ⊙ B₁)·A₀B₀'`: MSBs are equal AND LSB of A > LSB of B
-
----
-
-**Q6: What is IC 7485 and what are its key features?**
+**Q5: What is IC 7485 and what are its key features?**
 
 **A:** IC 7485 is a **4-bit magnitude comparator** with these features: 
 
@@ -519,7 +512,7 @@ It's widely used in digital systems for comparing binary numbers.
 
 ### 🚀 Advanced Concepts
 
-**Q7: How does the internal logic of a comparator actually work?**
+**Q6: How does the internal logic of a comparator actually work?**
 
 **A:** Comparators use a **priority-based comparison from MSB to LSB**: 
 
@@ -538,7 +531,7 @@ This design allows fast comparison with minimal propagation delay.
 
 ---
 
-**Q8: Why do we need cascading inputs in comparators?**
+**Q7: Why do we need cascading inputs in comparators?**
 
 **A:** Cascading inputs allow: 
 
@@ -553,7 +546,7 @@ This design allows fast comparison with minimal propagation delay.
 
 ---
 
-**Q9: What is the time complexity of a comparator circuit?**
+**Q8: What is the time complexity of a comparator circuit?**
 
 **A:** 
 - **Logical complexity:** O(n) where n = number of bits
@@ -570,7 +563,7 @@ For an 8-bit cascaded system: ~46ns (2× IC delay)
 
 ---
 
-**Q10: How would you compare two 16-bit numbers efficiently?**
+**Q9: How would you compare two 16-bit numbers efficiently?**
 
 **A:** **Method 1 - Cascading four IC 7485s:**
 
@@ -591,7 +584,7 @@ IC1 (bits 0-3, LSB) → IC2 (bits 4-7) → IC3 (bits 8-11) → IC4 (bits 12-15, 
 
 ### 💡 Practical Understanding
 
-**Q11: In a 4-bit comparator, if A=1010 and B=1001, explain step-by-step how the circuit determines A>B.**
+**Q10: In a 4-bit comparator, if A=1010 and B=1001, explain step-by-step how the circuit determines A>B.**
 
 **A:** 
 
@@ -616,7 +609,7 @@ IC1 (bits 0-3, LSB) → IC2 (bits 4-7) → IC3 (bits 8-11) → IC4 (bits 12-15, 
 
 ---
 
-**Q12: Why is XNOR gate important in comparators?**
+**Q11: Why is XNOR gate important in comparators?**
 
 **A:** XNOR gate is crucial because it **detects equality**: 
 
@@ -638,7 +631,7 @@ Without XNOR, you'd need:  A'B' + AB (3 gates vs 1 gate)
 
 ---
 
-**Q13: What happens if cascading inputs are incorrectly connected?**
+**Q12: What happens if cascading inputs are incorrectly connected?**
 
 **A:** **Incorrect cascading leads to wrong results! **
 
@@ -661,7 +654,7 @@ If A=B=1010:
 
 ---
 
-**Q14: Can you compare negative numbers using comparators?**
+**Q13: Can you compare negative numbers using comparators?**
 
 **A:** **Yes, but with special considerations:**
 
@@ -683,7 +676,7 @@ If A=B=1010:
 
 ---
 
-**Q15: What are the advantages of using IC 7485 over discrete gate design?**
+**Q14: What are the advantages of using IC 7485 over discrete gate design?**
 
 **A:** 
 
@@ -703,7 +696,7 @@ If A=B=1010:
 
 ### 🎓 Conceptual Mastery
 
-**Q16:  Explain the "priority encoder" principle in comparators.**
+**Q15:  Explain the "priority encoder" principle in comparators.**
 
 **A:** **Priority encoding** means **higher-order bits override lower-order bits**:
 
@@ -726,7 +719,7 @@ OR gate automatically selects the highest priority 1.
 
 ---
 
-**Q17: How many gates are needed to build a 2-bit comparator from scratch?**
+**Q16: How many gates are needed to build a 2-bit comparator from scratch?**
 
 **A:** **Approximate gate count:**
 
@@ -752,7 +745,7 @@ OR gate automatically selects the highest priority 1.
 
 ---
 
-**Q18: What is the difference between a comparator and a subtractor?**
+**Q17: What is the difference between a comparator and a subtractor?**
 
 **A:** 
 
@@ -768,7 +761,7 @@ OR gate automatically selects the highest priority 1.
 
 ---
 
-**Q19: How does propagation delay scale with bit count in cascaded comparators?**
+**Q18: How does propagation delay scale with bit count in cascaded comparators?**
 
 **A:** 
 
@@ -791,33 +784,6 @@ Examples:
 - Parallel prefix comparison
 - Look-ahead logic
 - Pipelined comparison
-
----
-
-**Q20: Design a circuit that outputs 1 when A ≥ B (greater than or equal).**
-
-**A:** 
-
-**Solution:** OR the A>B and A=B outputs
-
-```
-       ┌──────────────┐
-  A ───┤              │
-       │  COMPARATOR  ├───→ A>B ─┐
-  B ───┤              │          │
-       └──────────────┘          ├─── OR ───→ A≥B
-                          A=B ───┘
-```
-
-**Boolean expression:**
-```
-A ≥ B = (A>B) + (A=B)
-```
-
-**For IC 7485:**
-- Connect pin 7 (A>B) to OR gate input 1
-- Connect pin 6 (A=B) to OR gate input 2
-- OR gate output is A≥B
 
 ---
 
