@@ -115,7 +115,6 @@ Where:
 <img width="801" height="601" alt="image" src="https://github.com/user-attachments/assets/f41cb68b-093c-40bb-a4dc-50b4db140b57" />
 
 
-
 ### Gate Count
 
 - **AND gates:** 2
@@ -191,12 +190,27 @@ A < B = A₁'B₁ + (A₁ ⊙ B₁)·A₀'B₀
 Inputs:  A₁, A₀, B₁, B₀
 Outputs: A>B, A=B, A<B
 
-<img width="1019" height="747" alt="image" src="https://github.com/user-attachments/assets/0e91c8f3-019d-4ec6-a000-74390532f300" />
+### Truth Table 
 
-### Truth Table (Partial)
+![Truth Table](truth_table.png)
 
-<img width="520" height="643" alt="image" src="https://github.com/user-attachments/assets/e4c2d028-cfa4-4a48-9185-a97abd682f44" />
+From the above truth table, K-map for each output can be drawn as follows.
 
+### K-map of Output A>B
+
+<img width="354" height="297" alt="image" src="https://github.com/user-attachments/assets/5184177a-9ada-4345-a992-abd4865cc10e" />
+
+### K-map of Output A=B
+
+<img width="359" height="308" alt="image" src="https://github.com/user-attachments/assets/d25030df-0109-4c35-abec-bf2b821df048" />
+
+### K-map of Output A<B
+
+<img width="362" height="300" alt="image" src="https://github.com/user-attachments/assets/52a29217-329f-4462-80b6-37f43361b7ba" />
+
+### Logic Diagram
+
+![2-bit Comparator Logic Diagram](logic_diagram.png)
 
 ### Example
 
