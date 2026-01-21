@@ -186,6 +186,10 @@ b2 = b3 ⊕ g2
 b1 = b2 ⊕ g1
 b0 = b1 ⊕ g0
 
+#### LOgic Diagram 
+
+<img width="300" height="147" alt="image" src="https://github.com/user-attachments/assets/10af50bb-d038-4b24-90bf-4b361dfb494e" />
+
 Example (4-bit):
 - g = 1110
 - b0 = 1
